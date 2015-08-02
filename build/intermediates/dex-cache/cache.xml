@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/yoshi/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-5ecec7b618b3632e8415063168a9d7d0ef6e9d7f.jar" />
+    </item>
+    <item
+        jar="/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/build/intermediates/pre-dexed/debug/classes-10c76f46a8f7a7f4d706b8d4f4beec38703250bd.jar" />
+    </item>
+    <item
+        jar="/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/build/intermediates/pre-dexed/debug/classes-101f8794d5557eb634361f16179b0a59587fe393.jar" />
+    </item>
+    <item
+        jar="/Users/yoshi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-b2459cca82a62aa20601f14cfa34381d58a020a0.jar" />
+    </item>
+    <item
+        jar="/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-415b44100e476b792ed30666ee398020cb42e453.jar" />
+    </item>
+    <item
+        jar="/Users/yoshi/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.6/a845a88238be0b5be9d238652c1bc0605ef91f52/android-async-http-1.4.6.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
+        <dex dex="/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.6-7732a3f5d0e5257a68d5dae137ca2dcbeb54f3a7.jar" />
+    </item>
+
+</items>

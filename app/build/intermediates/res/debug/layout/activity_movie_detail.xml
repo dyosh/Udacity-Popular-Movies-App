@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.yoshi.popularmovies.MovieDetailActivity">
+
+
+    <TextView
+        android:id="@+id/movieTitle"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:hint="Large Text"
+        android:background="#009985"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:textSize="38sp"
+        android:textColor="#ffffffff"/>
+
+    <ImageView
+        android:id="@+id/movieImagePoster"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/pikkachu"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout="@id/movieTitle"
+        android:layout_below="@+id/movieTitle"/>
+
+    <TextView
+        android:id="@+id/movieReleaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Year"
+        android:layout_alignTop="@+id/movieImagePoster"
+        android:layout_toRightOf="@+id/movieImagePoster"
+        android:layout_toEndOf="@+id/movieImagePoster"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp"
+        android:layout_below="@+id/movieTitle"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:id="@+id/movieLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Length"
+        android:layout_below="@+id/movieReleaseDate"
+        android:layout_alignLeft="@+id/movieReleaseDate"
+        android:layout_alignStart="@+id/movieReleaseDate" />
+
+    <TextView
+        android:id="@+id/movieRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Rating"
+        android:layout_below="@+id/movieLength"
+        android:layout_alignLeft="@+id/movieLength"
+        android:layout_alignStart="@+id/movieLength" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ Favorites"
+        android:id="@+id/button"
+        android:layout_below="@+id/movieRating"
+        android:layout_alignLeft="@+id/movieRating"
+        android:layout_alignStart="@+id/movieRating"
+        android:layout_marginTop="27dp" />
+
+    <TextView
+        android:id="@+id/movieOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Synopsis"
+        android:layout_below="@+id/movieImagePoster"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingTop="15dp"
+        android:paddingLeft="10dp"/>
+
+
+    <RelativeLayout
+        android:id="@+id/movieTrailerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/movieOverview" >
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+<!-- From: file:/Users/yoshi/Desktop/AndroidProjects/Popular-Movies/app/src/main/res/layout/activity_movie_detail.xml -->
