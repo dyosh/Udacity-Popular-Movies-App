@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     MovieDBClient client;
     MovieDBClient castClient;
 
+    public static ArrayList<MovieDataModel> movies = new ArrayList<>();
+
     public static final String MOVIE_DETAIL_KEY = "movie";
 
     @Override
@@ -40,10 +42,12 @@ public class MainActivity extends AppCompatActivity {
         adapterMovies = new MovieAdapter(this, aMovies);
         gvMovies.setAdapter(adapterMovies);
         fetchMovieData(client, adapterMovies);
+
         setupMovieSelectedListener();
     }
 
     public void fetchMovieData(MovieDBClient client, final ArrayAdapter<MovieDataModel> adapterMovies) {
+
         client = new MovieDBClient();
         client.getMovies(new JsonHttpResponseHandler() {
             @Override
@@ -53,30 +57,57 @@ public class MainActivity extends AppCompatActivity {
                     // Get the movies json array
                     items = response.getJSONArray("results");
                     // Parse json array into array of model objects
-                    ArrayList<MovieDataModel> movies = MovieDataModel.fromJson(items);
-
-                    // TODO: have fetchMovieData return the movies ArrayList to be used in a separate method
-                    // TODO: this new method will populate the adapterMovies adapter
-                    // TODO: this method should take a parameter that specifies which JSON result to sort by
-                    // Sort by rating in descending order, *NOTE* rhs comparedTo lhs for descending in this case.
-                    Collections.sort(movies, new Comparator<MovieDataModel>() {
-                        @Override
-                        public int compare(MovieDataModel lhs, MovieDataModel rhs) {
-                            return (rhs.getMovieRating().compareTo(lhs.getMovieRating()));
-                        }
-                    });
-
-                    // Load model objects into the adapter
-                    for (MovieDataModel movie : movies) {
-                        adapterMovies.add(movie); // add movie through the adapter
-                    }
-
-                    adapterMovies.notifyDataSetChanged();
+                    movies = MovieDataModel.fromJson(items);
+                    sortMovies(adapterMovies, "movieReleaseDate");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
+    }
+
+    public void sortMovies(ArrayAdapter<MovieDataModel> adapterMovies, String sortType) {
+
+        switch(sortType){
+            case "movieRating":
+                Collections.sort(movies, new Comparator<MovieDataModel>() {
+                    @Override
+                    public int compare(MovieDataModel lhs, MovieDataModel rhs) {
+                        return (rhs.getMovieRating().compareTo(lhs.getMovieRating()));
+                    }
+                });
+                break;
+            case "movieTitle":
+                Collections.sort(movies, new Comparator<MovieDataModel>() {
+                    @Override
+                    public int compare(MovieDataModel lhs, MovieDataModel rhs) {
+                        return (lhs.getMovieTitle().compareTo(rhs.getMovieTitle()));
+                    }
+                });
+                break;
+            case "movieReleaseDate":
+                Collections.sort(movies, new Comparator<MovieDataModel>() {
+                    @Override
+                    public int compare(MovieDataModel lhs, MovieDataModel rhs) {
+                        return (rhs.getMovieReleaseDate().compareTo(lhs.getMovieReleaseDate()));
+                    }
+                });
+                break;
+            default:
+                Collections.sort(movies, new Comparator<MovieDataModel>() {
+                    @Override
+                    public int compare(MovieDataModel lhs, MovieDataModel rhs) {
+                        return (rhs.getMovieRating().compareTo(lhs.getMovieRating()));
+                    }
+                });
+                 break;
+        }
+
+        // Load model objects into the adapter
+        for (MovieDataModel movie : movies) {
+            adapterMovies.add(movie); // add movie through the adapter
+        }
+        adapterMovies.notifyDataSetChanged();
     }
 
     public void setupMovieSelectedListener() {
@@ -112,7 +143,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.sortMovies) {
+            sortMovies(adapterMovies, "movieTitle");
+            startActivity(new Intent(this, MainActivity.class));
 
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

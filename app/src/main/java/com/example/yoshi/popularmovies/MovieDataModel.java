@@ -67,7 +67,6 @@ public class MovieDataModel implements Serializable {
         return movieData;
     }
 
-
     public static ArrayList<MovieDataModel> fromJson(JSONArray jsonArray) {
         ArrayList<MovieDataModel> movies = new ArrayList<MovieDataModel>(jsonArray.length());
 
@@ -87,7 +86,6 @@ public class MovieDataModel implements Serializable {
         }
         return movies;
     }
-
 
 }
 
