@@ -25,7 +25,7 @@ public class MovieListViewActivity extends AppCompatActivity {
         adapterMovies = new MovieListViewAdapter(this, aMovies);
         lvMovies.setAdapter(adapterMovies);
 
-        main.sortMovies(adapterMovies, "movieTitle");
+        main.sortMovies(adapterMovies, "movieRating");
 //        main.fetchMovieData(client, adapterMovies);
 
     }
