@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<MovieDataModel> movies = new ArrayList<>();
     public static final String MOVIE_DETAIL_KEY = "movie";
 
-    protected boolean controlRefresh = false;
+    public static int spinnerPosition;
 
+    protected boolean controlRefresh = false;
     static boolean hasFetchedData = false;
 
     @Override
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         adapterMovies = new MovieAdapter(this, aMovies);
         gvMovies.setAdapter(adapterMovies);
 
+        // check to see if the movie data has already been fetched
         if (!hasFetchedData) {
             fetchMovieData(client, adapterMovies);
             hasFetchedData = true;
@@ -89,19 +91,19 @@ public class MainActivity extends AppCompatActivity {
     public void sortMovies(ArrayAdapter<MovieDataModel> adapterMovies, String sortType) {
 
         switch(sortType){
-            case "movieRating":
-                Collections.sort(movies, new Comparator<MovieDataModel>() {
-                    @Override
-                    public int compare(MovieDataModel lhs, MovieDataModel rhs) {
-                        return (rhs.getMovieRating().compareTo(lhs.getMovieRating()));
-                    }
-                });
-                break;
             case "movieTitle":
                 Collections.sort(movies, new Comparator<MovieDataModel>() {
                     @Override
                     public int compare(MovieDataModel lhs, MovieDataModel rhs) {
                         return (lhs.getMovieTitle().compareTo(rhs.getMovieTitle()));
+                    }
+                });
+                break;
+            case "movieRating":
+                Collections.sort(movies, new Comparator<MovieDataModel>() {
+                    @Override
+                    public int compare(MovieDataModel lhs, MovieDataModel rhs) {
+                        return (rhs.getMovieRating().compareTo(lhs.getMovieRating()));
                     }
                 });
                 break;
@@ -136,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -146,22 +149,27 @@ public class MainActivity extends AppCompatActivity {
         final Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
         spinner.setAdapter(ArrayAdapter.createFromResource(this,
                 R.array.sortOptions, android.R.layout.simple_spinner_dropdown_item));
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                // TODO: USE SHAREDPREFERENCES TO KEEP TRACK OF WHICH SELECTION WAS PRESSED
-                // TODO: ALSO, FIX SO THAT POSITION 0 DOESN'T AUTOMATICALLY GET SELECTED WHEN VIEW IS LOADED
-                if (position == 0) {
-//                     sortMovies(adapterMovies, "movieTitle");
-//                     startActivity(new Intent(MainActivity.this, MainActivity.class));
-                } else if (position == 1) {
-                    sortMovies(adapterMovies, "movieRating");
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
-                } else if (position == 2) {
-                    sortMovies(adapterMovies, "movieReleaseDate");
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
-
+                if (spinnerPosition != position) {
+                    adapterMovies.clear();
+                    if (position == 0) {
+                        sortMovies(adapterMovies, "movieTitle");
+                        spinnerPosition = position;
+                        populateMovieData(adapterMovies);
+                    } else if (position == 1) {
+                        sortMovies(adapterMovies, "movieRating");
+                        spinnerPosition = position;
+                        spinner.setSelection(spinnerPosition);
+                        populateMovieData(adapterMovies);
+                    } else if (position == 2) {
+                        sortMovies(adapterMovies, "movieReleaseDate");
+                        spinnerPosition = position;
+                        spinner.setSelection(spinnerPosition);
+                        populateMovieData(adapterMovies);
+                    }
                 }
             }
 

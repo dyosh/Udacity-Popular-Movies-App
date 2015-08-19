@@ -34,7 +34,7 @@ public class MovieDetailActivity extends Activity {
                 getIntent().getSerializableExtra(MainActivity.MOVIE_DETAIL_KEY);
         movieTitle.setText(movie.getMovieTitle());
         movieRating.setText(movie.getMovieRating() + " / 10");
-        movieOverview.setText("Summary: " + movie.getMovieOverview());
+        movieOverview.setText("Summary:" + movie.getMovieOverview());
         movieReleaseDate.setText(movie.getMovieReleaseDate());
 
         Picasso.with(this).load(movie.getPosterPath()).into(movieImagePoster);
